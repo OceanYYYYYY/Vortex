@@ -1,0 +1,18 @@
+{Ux}=ddx({X Velocity})
+{Uy}=ddy({X Velocity})
+{Uz}=ddz({X Velocity})
+{Vx}=ddx({Y Velocity})
+{Vy}=ddy({Y Velocity})
+{Vz}=ddz({Y Velocity})
+{Wx}=ddx({Z Velocity})
+{Wy}=ddy({Z Velocity})
+{Wz}=ddz({Z Velocity})
+{P} = -({Ux}+{Vy}+{Wz})
+{Q} = (-{Uy}*{Vx}-{Uz}*{Wx}-{Vz}*{Wy}+{Ux}*{Vy}+{Wz}*{Ux}+{Wz}*{Vy})
+{R} = ({Ux}*({Vz}*{Wy}-{Vy}*{Wz})+{Uy}*({Vx}*{Wz}-{Wx}*{Vz})+{Uz}*({Wx}*{Vy}-{Vx}*{Wy}))
+{R2} = ({R}+(2/27)*{P}**3-{Q}*{P}/3)
+{Q2} = ({Q}-{P}**2/3)'
+{Delta} = ({Q2}/3)**3+({R2}/2)**2
+{Beta2} = IF ({Delta}>=0 ,(ABS(SQRT(ABS({Delta}))-{R2}/2))**(1/3),0)
+{Beta3} = IF ({Delta}>=0 ,(ABS(SQRT(ABS({Delta}))+{R2}/2))**(1/3),0)
+{LambdaCi}=(SQRT(3)/2)*({Beta2}+{Beta3})
